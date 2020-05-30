@@ -1,0 +1,34 @@
+<template>
+  <div>
+      <div class="outer">
+          <p>第一个页面的公共组件</p>
+      </div>
+  </div>
+</template>
+
+<script>
+  // 引入组件
+
+export default {
+  data () {
+    return {
+
+    }
+  },
+  // 注册组件
+  components: {
+
+  }
+}
+</script>
+
+<style>
+.outer{
+    width: 120px;
+    height: 120px;
+    color: red;
+    /* border-color: green; */
+    border: 10px;
+}
+ 
+</style>

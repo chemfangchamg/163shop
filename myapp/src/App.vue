@@ -1,31 +1,32 @@
 <template>
   <div>
-    <h1>用户登录</h1>
-    <form id="login-form">
-      用户名:
-      <input type="text" class="login-username" />
-      <br />密码:
-      <input type="password" class="login-password" />
-      <br />
-      <button type="submit" @click="handClickLogin">登录</button>
-    </form>
+    <Header/>
+    <Home/>
+    <Footer/>
   </div>
 </template>
+
 <script>
+  // 引入组件
+  import Header from '../components/Header/Header'
+  import Footer from '../components/Footer/Footer'
+  import Home from '../pages/Home/Home'
 export default {
-  methods: {
-    // 点击登录的回调
-    handClickLogin: function(e) {
-      e.preventDefault();
-      // 发送ajax请求
+  data () {
+    return {
+
     }
+  },
+  // 注册组件
+  components: {
+    Header,
+    Home,
+    Footer,
   }
-};
-</script>
-<style>
-#box {
-  background-color: red;
-  width: 220px;
-  height: 100px;
 }
+</script>
+
+<style>
+
+ 
 </style>
