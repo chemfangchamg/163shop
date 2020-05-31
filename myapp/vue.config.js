@@ -3,10 +3,17 @@ module.exports = {
   devServer: {
     contentBase: path.resolve(__dirname, 'public'),
     open: true, // 自动打开浏览器
-    host: 'localhost',
-    port: 9527,
     compress: true, // 启动gzip压缩资源
     hot: true, // 启动HMR功能
+    proxy:{
+      '/api': {
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': '', 
+        }
+      }
+    }
   },
   css: {
     loaderOptions: {

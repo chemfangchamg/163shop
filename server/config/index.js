@@ -5,6 +5,7 @@ const isDev = process.env.NODE_ENV === 'development'
 let SERVER_CONFIG, DB_CONFIG
 
 if (isDev) {
+    console.log("isDev")
     SERVER_CONFIG = {
         port: 4000,
     }
@@ -15,6 +16,8 @@ if (isDev) {
     }
 } else {
     // 由于没上线，所以一致
+    console.log("noDev");
+    
     SERVER_CONFIG = {
         port: 4000,
     }

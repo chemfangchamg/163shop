@@ -10,6 +10,7 @@ var logger = require('morgan');
 // 引入路由组件
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var homeGetRouter = require('./routes/homeGet');
 // 创建一个express实例
 var app = express();
 
@@ -30,6 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // 声明使用路由器中间件
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/home', homeGetRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
