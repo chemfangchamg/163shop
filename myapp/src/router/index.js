@@ -9,9 +9,9 @@ import routes from './routes'
 // 声明使用路由
 Vue.use(VueRouter)
 const router = new VueRouter({
-    mode: 'hash', // 设置路由地址的模式---hash是带#,history---不带#
-  routes,  
-  
+  mode: 'history', // 设置路由地址的模式---hash是带#,history---不带#
+  routes,
+
 })
 
 

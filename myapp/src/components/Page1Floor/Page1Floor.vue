@@ -23,12 +23,12 @@ export default {
 </script>
 
 <style>
+
 .outer{
-    width: 120px;
-    height: 120px;
-    color: red;
-    /* border-color: green; */
-    border: 10px;
+  width: 100%;
+  color: #333;
+  background-color: #ffffff;
+
 }
  
 </style>

@@ -1,5 +1,8 @@
 <template>
   <div>
+    <van-sticky>
+      <van-button type="primary">基础用法</van-button>
+    </van-sticky>
     <DownloadBanner v-if="isShow"></DownloadBanner>
     <div id="hd">
       <div class="logo">

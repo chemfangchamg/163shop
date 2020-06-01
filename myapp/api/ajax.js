@@ -11,9 +11,7 @@ const ajax = axios.create({
 
 // 请求拦截器
 ajax.interceptors.request.use(
-    (config)=>{
-        console.log(config);
-        
+    (config)=>{        
         return config
     },
     (err)=>{
