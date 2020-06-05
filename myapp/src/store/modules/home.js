@@ -23,24 +23,24 @@ const state = {
     categoryList1: [], // 热销榜数据
     categoryList2: [], // 热销榜数据
     popularItemList: [], // 人气推荐数据
-    // categoryOne:[],
+    flashSaleList: [], // 限时购
+    newItemList:[], // 新品
 }
 // 直接修改数据的方法
 const mutations = {
     // 得到首页所有数据的方法
     RECEIVE_REQHOMEDATA (state,HomeData){
         state.HomeData = HomeData, // 总的
-        // console.log(HomeData);
-        
         state.kingKongModule = HomeData.kingKongModule // 商品宫格
         state.categoryList2 = HomeData.categoryHotSellModule.categoryList
         state.categoryList1 = state.categoryList2.splice(0,2)
-        // console.log(HomeData.kingKongModule);
-        console.log(HomeData.categoryHotSellModule.categoryList);
         // 人气推荐数据
         state.popularItemList= HomeData.popularItemList
-        console.log(state.popularItemList);
-        
+        // 限时购数据
+        state.flashSaleList = HomeData.flashSaleModule.itemList
+        // 新品首发
+        state.newItemList = HomeData.newItemList
+        console.log(state.newItemList);
     }
 }
 // 间接修改状态数据的方法

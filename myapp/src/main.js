@@ -12,6 +12,7 @@ import { Image as VanImage } from 'vant';
 import { Tabbar, TabbarItem } from 'vant'; //标签栏
 import { Sticky } from 'vant'; // 粘连布局
 import { NavBar } from 'vant'; // 导航栏
+import { Sidebar, SidebarItem } from 'vant'; //侧边导航
 
 
 
@@ -45,6 +46,10 @@ Vue.use(TabbarItem);
 Vue.use(Sticky);
 // 导航栏
 Vue.use(NavBar);
+// 侧边导航
+Vue.use(Sidebar);
+Vue.use(SidebarItem);
+
 
 Vue.config.productionTip = true
 

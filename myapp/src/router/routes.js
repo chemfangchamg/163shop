@@ -6,6 +6,7 @@
 import Test1 from '../pages/test/test1.vue'
 import Test2 from '../pages/test/test2.vue'
 import Home from '../pages/Home/Home.vue'
+import Category from '../pages/Category/Category.vue'
 
 // 暴露路由
 export default[
@@ -21,4 +22,9 @@ export default[
         path:'/test2',
         component:Test2
     },
+    {
+        path:'/category',
+        component:Category
+    },
+
 ]

@@ -89,26 +89,63 @@
     </div>
 
     <!-- 人气推荐popularItemList -->
-    <div class="popular">
-      <van-nav-bar left-text="人气推荐" right-text="更多" class="popular-title" />
-      <div class="popular-m-img">
-        <div class="img-show">
-          <van-image :src="categoryOne.scenePicUrl" />
+    <div class="outer">
+      <div class="popular">
+        <van-nav-bar left-text="人气推荐" right-text="更多" class="popular-title" />
+        <div class="popular-m-img">
+          <div class="img-show">
+            <van-image :src="categoryOne.scenePicUrl" />
+          </div>
+          <div class="text-show">
+            <!-- <p v-text="this"></p> -->
+            <p v-text="categoryOne.simpleDesc"></p>
+          </div>
         </div>
-        <div class="text-show">
-          <!-- <p v-text="this"></p> -->
-          <p v-text="categoryOne.simpleDesc"></p>
+        <div class="popular-s-img">
+          <van-grid>
+            <van-grid-item v-for="(item,index) in popularItemList" :key="index">
+              <van-image :src="item.scenePicUrl" />
+              <span v-text="item.simpleDesc"></span>
+            </van-grid-item>
+          </van-grid>
         </div>
-      </div>
-      <div class="popular-s-img">
-        <van-grid>
-          <van-grid-item v-for="(item,index) in popularItemList" :key="index">
-            <van-image :src="item.scenePicUrl" />
-            <span v-text="item.simpleDesc"></span>
-          </van-grid-item>
-        </van-grid>
       </div>
     </div>
+    <!-- 限时购 -->
+    <div class="outer">
+      <div class="flashSale">
+        <div class="title">限时抢购</div>
+        <div class="flashSaleList">
+          <van-grid clickable :column-num="3">
+            <van-grid-item v-for="(item) in flashSaleList" :key="item.itemId">
+              <van-image fit="scale-down" class="flashSaleImg" :src="item.showPicUrl" />
+              <p>
+                <span style="color:red">￥{{item.activityPrice}}</span>
+                <span style="text-decoration:line-through">￥{{item.originPrice}}</span>
+              </p>
+            </van-grid-item>
+          </van-grid>
+        </div>
+      </div>
+    </div>
+    <!-- 新品首发 -->
+    <div class="outer">
+      <div class="newItem">
+        <div class="title">新品首发</div>
+        <div class="newItemList">
+          <van-grid clickable :column-num="3">
+            <van-grid-item v-for="(item) in newItemList" :key="item.itemId">
+              <van-image fit="scale-down" class="flashSaleImg" :src="item.listPicUrl" />
+              <p>{{item.name}}</p>
+              <p>
+                <span style="color:red">￥{{item.sellVolume}}</span>
+              </p>
+            </van-grid-item>
+          </van-grid>
+        </div>
+      </div>
+    </div>
+
     <Page1Floor />
     <!-- 底部导航 -->
     <BottomNav />
@@ -141,11 +178,7 @@ export default {
   beforeMount() {
     // dispatch
     this.$store.dispatch("getHomeData");
-    // console.log(this.$store.state.home.popularItemList[0].scenePicUrl);
-    console.log(this);
-    setTimeout(() => {
-      console.log(this.categoryOne);
-    }, 4000);
+    this.$store.state.isShowHeader = true
   },
   // 计算属性，取得数据
   computed: {
@@ -156,11 +189,15 @@ export default {
       categoryList1: state => state.home.categoryList1,
       categoryList2: state => state.home.categoryList2,
       // 人气推荐
-      popularItemList: state => state.home.popularItemList
+      popularItemList: state => state.home.popularItemList,
       //categoryOne: state => {return state.home.popularItemList[0]}
+      // 限时购数据
+      flashSaleList: state => state.home.flashSaleList,
+      // 新品
+      newItemList: state => state.home.newItemList,
+      isShowHeader:state => state.isShowHeader
     }),
     categoryOne() {
-      console.log("aaaa", this.popularItemList.slice(0, 1) || {});
       return this.popularItemList[0] || {};
     }
   }
@@ -261,7 +298,7 @@ export default {
 }
 
 // 类目热销
-.outer{
+.outer {
   width: 750px;
   background-color: #ffffff;
 }
@@ -330,6 +367,34 @@ export default {
       padding: 20px 50px;
       text-align: center;
       font-size: 28px;
+    }
+  }
+}
+
+// 限时购
+.flashSale {
+  width: 690px;
+  margin: auto;
+
+  .flashSaleList {
+    .van-image {
+      background-color: #f5f5f5;
+    }
+    p {
+      line-height: 80px;
+    }
+  }
+}
+// 新品
+.newItem {
+  width: 690px;
+  margin: auto;
+  .newItemList {
+    .van-image {
+      background-color: #f5f5f5;
+    }
+    p{
+      font-size: 16px;
     }
   }
 }

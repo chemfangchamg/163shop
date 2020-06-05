@@ -10,11 +10,12 @@ Vue.use(Vuex)
 
 // 引入模块
 import modules from './modules'
-
+import state from './state'
 // 实例化Vuex仓库并暴露出去
 export default new Vuex.Store(
     {
         modules,
-        // 没有引入公共的state，mutation，action等
+        state,
+        // 没有引入公共的mutation，action等
     }
 )

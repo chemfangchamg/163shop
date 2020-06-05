@@ -11,6 +11,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var homeGetRouter = require('./routes/homeGet');
+var categoryGetRouter = require('./routes/categoryGet');
 // 创建一个express实例
 var app = express();
 
@@ -32,6 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/home', homeGetRouter);
+app.use('/category', categoryGetRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

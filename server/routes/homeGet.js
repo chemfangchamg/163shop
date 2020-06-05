@@ -2,10 +2,10 @@
 const homeData = require('../public/index.json')
 module.exports = function (router) {
     router.get('/home', function (req, res, next) {
-        console.log("服务器收到请求-home");
+        console.log("服务器收到请求-home",req.query);
         res.json({
             code:200,
-            data:homeData
+            data:homeData,
         })
         // res.attachment('../public/index.json')
     });

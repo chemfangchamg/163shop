@@ -6,7 +6,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  
+  console.log("参数是",req);
   res.render('index', { title: 'Express' });
 });
 router.post('/abc',function(req,res){
@@ -20,7 +20,9 @@ require('./login')(router)
 require('./users')(router)
 // 请求主页推荐数据
 require('./homeGet')(router)
-// 主页nav对应模块数据
+// 请求分类页的数据
+require('./categoryGet')(router)
 
-// 分类左侧导航数据
+
+
 module.exports = router;

@@ -1,10 +1,7 @@
 <template>
   <div>
-    <van-sticky>
-      <van-button type="primary">基础用法</van-button>
-    </van-sticky>
     <DownloadBanner v-if="isShow"></DownloadBanner>
-    <div id="hd">
+    <div id="hd" v-if="isHdShow">
       <div class="logo">
         <img
           src="http://yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/indexLogo-a90bdaae6b.png?imageView&type=webp"
@@ -21,7 +18,7 @@
       </div>
     </div>
     <!-- 水平列表栏 -->
-    <div class="navBar">
+    <div class="navBar" v-if="isHdShow">
       <van-grid direction="horizontal" :column-num="5">
         <van-grid-item text="文字" />
         <van-grid-item text="文字" />
@@ -39,9 +36,16 @@ export default {
   data() {
     return {
       isShow: true,
+      // isHdShow: true,
       value: "",
       activeNames: ["1"]
     };
+  },
+  computed:{
+    isHdShow(){
+      console.log("1553",this.$store.state.isShowHeader);
+      return this.$store.state.isShowHeader
+    }
   },
   components: {
     DownloadBanner
